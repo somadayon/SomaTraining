@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('./error_messages'); %> 
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title><%= title %></title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<%- include('./messages'); %>
+<B>ログインしてください</B>
+<form action="/login" method="post">
+  <label>ユーザー名</label>
+  <input required type="text" maxlength="30" pattern="[A-Za-z]*" name="username"/>
+  <br>
+  <label>パスワード</label>
+  <input required type="password" maxlength="20" pattern="[A-Za-z]*" name="password"/>
+  <br>
+  <input type="submit" value="送信"/>
+  <br>
+  <a href="/signup" class="signup-button">ユーザー登録はこちら</a>
+</form>
+</body>
+</html>

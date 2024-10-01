@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <style>
+    /* テーブルをスクロール可能にするためのスタイル */
+    .table-container {
+      max-height: 300px; /* 必要に応じて高さを調整 */
+      overflow-y: auto;
+      border: 1px solid #ccc; /* コンテナの枠線 */
+    }
+
+    .table_sticky {
+      width: 100%;
+      border-collapse: collapse; /* セルとテーブルの境界線を統一 */
+      border: 1px solid #ccc; /* テーブル全体の枠線を1pxに設定 */
+      background-color: #f9f9f9; /* テーブル全体の背景色 */
+    }
+
+    .table_sticky th, .table_sticky td {
+      border: 1px solid #ccc; /* セルの枠線を細く設定 */
+      padding: 8px;
+      text-align: left;
+      background-color: inherit; /* 親テーブルの背景色を継承 */
+    }
+
+    .table_sticky th {
+      position: sticky;
+      top: 0;
+      background: #f1f1f1;
+      z-index: 10;
+    }
+
+    .table_sticky tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./error_messages'); %>
+  <% if(isAuth) { %>
+    <%- include('./messages'); %>
+    <h2>ようこそ <%= username %> さん</h2>
+    <!-- 入力フォーム -->
+    <b><%= form %></b> 
+    <form action="/" method="post">
+    <% 
+    // 今日の日付を取得
+    const today = new Date();
+  
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // 月は0から始まるので+1し、2桁に調整
+    const day = String(today.getDate()).padStart(2, '0'); // 日を2桁に調整
+    const formattedDate = `${year}-${month}-${day}`;
+    %>
+    <label>日付　　</label>
+    <input required type="date" name="date" min="<%= formattedDate %>" max="9999-12-31" value="<%= update.date %>">
+    <br>  
+    <label>出社時刻</label>
+    <input required type="time" name="time0" value="<%= update.start_time %>"/>
+    <br>  
+    <label>退社時刻</label>
+    <input required type="time" name="time1" value="<%= update.end_time %>"/>
+    <br>  
+    <label>コメント</label>
+    <input type="text" name="comment" maxlength="50" placeholder="50字まで" value="<%= update.comment %>"/>
+    <br>
+    <input type="submit" value="<%= behave %>"/>
+    </form>
+    
+    <div class="table-container">
+      <table class="table_sticky">
+        <tr>
+          <th>ユーザー名</th>
+          <th>年月日</th>
+          <th>出社時刻</th>
+          <th>退社時刻</th>
+          <th>コメント</th>
+          <th></th>
+          <th></th>
+        </tr>
+
+        <!-- 修正タスク -->
+        <% if (update.id) { %>
+          <tr style="color: #af0303; font-weight:bold;">
+            <% const [ year, month, day ] = update.date.split('-'); %>
+            <td><%= username %></td> 
+            <td><%= year %>年<%= month %>月<%= day %>日</td>
+            <td><%= update.start_time %></td>
+            <td><%= update.end_time %></td>
+            <td><%= update.comment %></td>
+            
+            <td>
+              <!-- 削除フォーム -->
+              <form action="/hide" method="post" style="display:inline;">
+                <input type="hidden" name="id" value="<%= update.id %>"/>
+                <input type="submit" value="削除"/>
+              </form>
+            </td>
+            <td>
+              <!-- 取消フォーム -->
+              <form action="/cancel" method="post" style="display:inline;">
+                <input type="submit" value="取消"/>
+              </form>
+            </td>
+          </tr>
+        <% } %>
+
+        <!-- タスクリスト -->
+        <% for(var todo of todos) if ((todo.id != update.id)) { %>
+          <% if (todo.username == username) { %>
+            <% 
+              username = todo.username; 
+              const time0 = todo.start_time;
+              const time1 = todo.end_time;
+              const comment = todo.comment;
+            %>  
+              <tr style="color: #000000; font-weight:bold;">
+                <% const [ year, month, day ] = todo.date.split('-'); %>
+                <td><%= username %></td> 
+                <td><%= year %>年<%= month %>月<%= day %>日</td>
+                <td><%= time0 %></td>
+                <td><%= time1 %></td>
+                <td><%= comment %></td>
+                <!-- 削除フォーム -->
+                <td>
+                <form action="/hide" method="post" style="display:inline;">
+                  <input type="hidden" name="id" value="<%= todo.id %>"/>
+                  <input type="submit" value="削除"/>
+                </form>
+                </td>
+                <!-- 修正フォーム -->
+                <td>
+                <form action="/update" method="post" style="display:inline;">
+                <input type="hidden" name="id" value="<%= todo.id %>"/>
+                <input type="submit" value="修正"/>
+                </form>
+                </td>
+              </tr>
+          <% } else { %>
+            <tr>
+              <% const [ year, month, day ] = todo.date.split('-'); %>
+              <td><%= todo.username %></td> 
+              <td><%= year %>年<%= month %>月<%= day %>日</td>
+              <td><%= todo.start_time %></td>
+              <td><%= todo.end_time %></td>
+              <td><%= todo.comment %></td>
+            </tr>
+          <% } %>
+        <% } %>
+      </table>
+    </div>
+
+    <!-- ログアウトリンク -->
+    <a href="/logout" class="logout-button">ログアウト</a>
+  <% } else { %>
+    <!-- 未認証用 -->
+    <h1>Welcome to the WebApp</h1>
+    <a href="/login">Login now!</a>
+    <br>
+    <a href="/signup">Sign up now!</a>
+  <% } %>
+</body>
+</html>

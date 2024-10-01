@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include('./error_messages'); %>
+  <title><%= title %></title>
+</head>
+<body>
+<form action="/signup" method="post">
+  <label>ユーザー名</label>
+  <input required type="text" maxlength="30" pattern="[A-Za-z]*" name="username" placeholder="半角英字のみ30字まで"/>
+  <br>
+  <label>パスワード</label>
+  <input required type="password" maxlength="20" pattern="[A-Za-z]*" name="password" placeholder="半角英字のみ20字まで"/>
+  <br>
+  <label>パスワード再入力</label>
+  <input required type="password" maxlength="20" pattern="[A-Za-z]*" name="repassword"/>
+  <br>
+  <input type="submit" value="送信"/>
+</form>
+</body>
+</html>
