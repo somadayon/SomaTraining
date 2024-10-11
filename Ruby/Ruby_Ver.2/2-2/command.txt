@@ -1,0 +1,530 @@
+set datafile separator ','
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/01.svg'
+set title '01'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202001.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/02.svg'
+set title '02'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202002.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/03.svg'
+set title '03'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202003.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/04.svg'
+set title '04'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202004.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/05.svg'
+set title '05'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202005.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/06.svg'
+set title '06'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202006.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/07.svg'
+set title '07'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202007.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/08.svg'
+set title '08'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202008.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/09.svg'
+set title '09'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202009.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/10.svg'
+set title '10'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202010.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/11.svg'
+set title '11'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202011.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2020/12.svg'
+set title '12'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202012.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/01.svg'
+set title '01'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202101.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/02.svg'
+set title '02'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202102.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/03.svg'
+set title '03'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202103.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/04.svg'
+set title '04'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202104.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/05.svg'
+set title '05'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202105.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/06.svg'
+set title '06'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202106.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/07.svg'
+set title '07'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202107.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/08.svg'
+set title '08'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202108.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/09.svg'
+set title '09'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202109.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/10.svg'
+set title '10'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202110.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/11.svg'
+set title '11'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202111.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+set term svg
+set output 'C:/Users/somad/Downloads/code/training/ruby/2-2/graph/2021/12.svg'
+set title '12'
+set xtics 1
+set y2tics
+set xlabel 'date(day)'
+set ylabel 'Temperature (°C) / Humidity (%)'
+set y2label 'CO2 (ppm)'
+set size ratio 0.5
+set grid
+plot 'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:2 axis x1y1 with lines lt 1 title 'Temperature_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:3 axis x1y1 with lines lt 2 title 'Temperature_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:4 axis x1y1 with lines lt 3 title 'Temperature_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:5 axis x1y1 with lines lt 4 title 'Temperature_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:6 axis x1y1 with lines lt 5 title 'Humidity_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:7 axis x1y1 with lines lt 6 title 'Humidity_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:8 axis x1y1 with lines lt 7 title 'Humidity_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:9 axis x1y1 with lines lt 8 title 'Humidity_med', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:10 axis x1y2 with lines lt 9 title 'CO2_ave', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:11 axis x1y2 with lines lt 10 title 'CO2_max', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:12 axis x1y2 with lines lt 11 title 'CO2_min', \
+     'C:/Users/somad/Downloads/code/training/ruby/2-2/data/202112.csv' using 1:13 axis x1y2 with lines lt 12 title 'CO2_med'
+q

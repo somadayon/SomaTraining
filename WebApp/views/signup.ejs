@@ -5,6 +5,7 @@
   <title><%= title %></title>
 </head>
 <body>
+<B>新規登録をしてください</B>
 <form action="/signup" method="post">
   <label>ユーザー名</label>
   <input required type="text" maxlength="30" pattern="[A-Za-z]*" name="username" placeholder="半角英字のみ30字まで"/>
@@ -18,4 +19,5 @@
   <input type="submit" value="送信"/>
 </form>
 </body>
+<a href="/login">ログインはこちら</a>
 </html>

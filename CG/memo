@@ -1,0 +1,177 @@
+この手順は、Ubuntu 22.04のデスクトップ版でC言語とOpenGLを使ってグラフィックスプログラムを作成するためのものです。OpenGLのバージョン3未満を使用し、GLSL（シェーディング言語）は使わないでください。また、OpenCVの使用は禁止されていますが、画像を出力する際にlibpngやlibjpegを使うことが許可されています。中学生にも分かるように、手順を一つ一つ分かりやすく説明します。
+0: 必要なライブラリを調べてインストールする
+
+OpenGLを使うためには、必要なライブラリをまずインストールします。
+
+    ターミナルを開く: Ctrl + Alt + T を押してターミナルを開きます。
+    コマンドを入力: 以下のコマンドをターミナルに入力して、必要なライブラリをインストールします。
+
+    bash
+
+    sudo apt update
+    sudo apt install build-essential libgl1-mesa-dev libglu1-mesa-dev freeglut3-dev
+
+    build-essential はC言語のコンパイルに必要なツールをインストールします。
+    libgl1-mesa-dev と libglu1-mesa-dev はOpenGLとGLU（OpenGL Utility Library）を使うためのライブラリです。
+    freeglut3-dev はOpenGLのウィンドウを扱うためのツールです。
+
+1: シアンの三角形と黄色の正方形を表示する
+
+    コードを書く: テキストエディタ（例：Gedit、VS Code）を使って以下のようなC言語のコードを書きます。
+
+    c
+
+#include <GL/glut.h>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // シアンの三角形
+    glColor3f(0.0f, 1.0f, 1.0f);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(-0.5f, -0.5f);
+    glVertex2f( 0.5f, -0.5f);
+    glVertex2f( 0.0f,  0.5f);
+    glEnd();
+
+    // 黄色の正方形
+    glColor3f(1.0f, 1.0f, 0.0f);
+    glBegin(GL_QUADS);
+    glVertex2f(-0.5f, -0.5f);
+    glVertex2f( 0.5f, -0.5f);
+    glVertex2f( 0.5f,  0.5f);
+    glVertex2f(-0.5f,  0.5f);
+    glEnd();
+
+    glFlush();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutCreateWindow("シアンの三角形と黄色の正方形");
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+
+コンパイルと実行:
+
+bash
+
+    gcc -o shapes shapes.c -lGL -lGLU -lglut
+    ./shapes
+
+    このコードはウィンドウを開いて、シアンの三角形と黄色の正方形を描画します。
+
+2: 3D表示
+2-1: 立方体を右斜め上から表示
+
+    コードを書く:
+
+    c
+
+#include <GL/glut.h>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // 3D空間の設定
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(2.0, 2.0, 2.0,  0.0, 0.0, 0.0,  0.0, 1.0, 0.0);
+
+    // 立方体の描画
+    glutWireCube(1.0);
+
+    glFlush();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    glutCreateWindow("立方体の3D表示");
+    glEnable(GL_DEPTH_TEST);
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+
+コンパイルと実行:
+
+bash
+
+    gcc -o cube3d cube3d.c -lGL -lGLU -lglut
+    ./cube3d
+
+    このコードは立方体を3Dで表示し、カメラを右斜め上から配置しています。
+
+2-2: Teapot（ティーポット）の表示
+
+    コードを書く:
+
+    c
+
+#include <GL/glut.h>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(2.0, 2.0, 2.0,  0.0, 0.0, 0.0,  0.0, 1.0, 0.0);
+
+    // ティーポットの描画
+    glutWireTeapot(1.0);
+
+    glFlush();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    glutCreateWindow("ティーポットの3D表示");
+    glEnable(GL_DEPTH_TEST);
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+
+コンパイルと実行:
+
+bash
+
+    gcc -o teapot teapot.c -lGL -lGLU -lglut
+    ./teapot
+
+    このコードはOpenGLのTeapotモデルを3Dで表示します。
+
+3: モデルの表示
+3-1: ピラミッド型モデルの作成と表示
+
+    .objファイルを作成: テキストエディタでピラミッド型のモデルを以下のように作成し、pyramid.obj という名前で保存します。
+
+    plaintext
+
+    v 0.0 0.5 0.0
+    v -0.5 -0.5 0.5
+    v 0.5 -0.5 0.5
+    v 0.5 -0.5 -0.5
+    v -0.5 -0.5 -0.5
+    f 1 2 3
+    f 1 3 4
+    f 1 4 5
+    f 1 5 2
+    f 2 3 4 5
+
+    ピラミッド表示のコードを書く: ピラミッドを表示するためのCコードを書きます（詳細は省略しますが、objファイルの読み込みと表示のロジックが必要です）。
+
+4: マウス操作でのカメラ調整
+
+マウス操作でカメラを動かせるようにするためには、OpenGLでマウスイベントを処理し、カメラの位置や注視点を変更するプログラムを作成します。具体的には、GLUTのglutMotionFuncやglutMouseFuncを使ってマウス操作を検知し、それに応じてカメラの位置を更新します。
+5以降: 高度な機能の実装
+
+ここから先は、照明やテクスチャの使用、3Dモデルの配置、カメラの操作性の向上など、さらに高度な内容になります。これらを実装するには、OpenGLの知識が必要です。また、各ステップで関数やライブラリを使って効率的にコードを書くことが求められます。
+
+特に、3D空間でのマウス操作やカメラの視野に基づいたモデルの判定、さらにオフスクリーンレンダリングなどは、OpenGLの基本を理解してから取り組むと良いでしょう。これらの手順を順に進めていくと、最終的には3Dグラフィックスプログラムが完成します。
+
+このように、一歩一歩進めていくことで、複雑なプログラムも作れるようになります。頑張ってください！

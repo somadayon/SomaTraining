@@ -1,0 +1,4 @@
+2005-02 book=200 taxi=8000 kosai=60000 sum=68200 
+2005-03 taxi=8000 sum=8000 
+2007-02 kosai=90000 sum=90000 
+  total book=200 taxi=16000 kosai=150000 sum=166200 
