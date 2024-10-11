@@ -49,6 +49,11 @@ function getTask() {
   });
 }
 
+function isValidTime(time) {
+  const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;  // 正規表現で時刻をチェック
+  return timePattern.test(time);
+}
+
 
 router.get('/', async function (req, res, next) {
   const nowDate = new Date(); // 現在日時の取得、日付比較用
@@ -144,7 +149,7 @@ router.post('/', async function (req, res, next) {
       errorMessages.push('年月日が無効です');
     }
     if (time0 != "99:99" && time1 != "99:99"){
-      if (time0 >= time1) {
+      if (!isValidTime(time0) || !isValidTime(time1) || time0 >= time1){
         errorMessages.push('出社時刻または退社時刻が無効です');
       }
     }
