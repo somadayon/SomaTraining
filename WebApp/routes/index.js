@@ -50,6 +50,7 @@ function getTask() {
 }
 
 function isValidTime(time) {
+  if (time != "99:99") return ture;
   const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;  // 正規表現で時刻をチェック
   return timePattern.test(time);
 }
@@ -148,10 +149,8 @@ router.post('/', async function (req, res, next) {
     if (nowDate > date) {
       errorMessages.push('年月日が無効です');
     }
-    if (time0 != "99:99" && time1 != "99:99"){
-      if (!isValidTime(time0) || !isValidTime(time1) || time0 >= time1){
-        errorMessages.push('出社時刻または退社時刻が無効です');
-      }
+    if (!isValidTime(time0) || !isValidTime(time1) || time0 >= time1){
+      errorMessages.push('出社時刻または退社時刻が無効です');
     }
     if (comment.length > commentLimit) {
       errorMessages.push(`コメントは${commentLimit}文字までです`);
