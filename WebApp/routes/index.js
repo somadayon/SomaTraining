@@ -50,7 +50,7 @@ function getTask() {
 }
 
 function isValidTime(time) {
-  if (time != "99:99") return true;
+  if (time == "99:99") return true;
   const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;  // 正規表現で時刻をチェック
   return timePattern.test(time);
 }
