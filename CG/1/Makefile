@@ -1,9 +1,9 @@
 NAME = CG
 
-all: build run
+all: build run clean
 
 build:
-	cc $(NAME).c -o $(NAME) -lGL -lGLU -lglut
+	cc $(NAME).c -o $(NAME) -lGL -lGLU -lglut -lm
 
 run:
 	./$(NAME)

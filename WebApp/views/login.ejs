@@ -12,10 +12,10 @@
 <B>ログインしてください</B>
 <form action="/login" method="post">
   <label>ユーザー名</label>
-  <input required type="text" maxlength="30" pattern="[A-Za-z]*" name="username"/>
+  <input required type="text" maxlength="30" pattern="^[0-9a-z]+$" name="username"/>
   <br>
   <label>パスワード</label>
-  <input required type="password" maxlength="20" pattern="[A-Za-z]*" name="password"/>
+  <input required type="password" maxlength="20" pattern="^[0-9a-z]+$" name="password"/>
   <br>
   <input type="submit" value="送信"/>
   <br>

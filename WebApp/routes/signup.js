@@ -15,7 +15,7 @@ function renderSignup(res, errorMessage = []) {
 }
 
 //文字列が小文字か確認
-const isLowerCase = str => /^[a-z]+$/.test(str);
+const isLowerCase = str => /^[0-9a-z]+$/.test(str);
 
 router.get('/', function (req, res, next) {
   renderSignup(res);

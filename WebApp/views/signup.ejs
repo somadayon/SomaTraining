@@ -8,13 +8,13 @@
 <B>新規登録をしてください</B>
 <form action="/signup" method="post">
   <label>ユーザー名</label>
-  <input required type="text" maxlength="30" pattern="[A-Za-z]*" name="username" placeholder="半角英字のみ30字まで"/>
+  <input required type="text" maxlength="30" pattern="^[0-9a-z]+$" name="username" placeholder="半角英字のみ30字まで"/>
   <br>
   <label>パスワード</label>
-  <input required type="password" maxlength="20" pattern="[A-Za-z]*" name="password" placeholder="半角英字のみ20字まで"/>
+  <input required type="password" maxlength="20" pattern="^[0-9a-z]+$" name="password" placeholder="半角英字のみ20字まで"/>
   <br>
   <label>パスワード再入力</label>
-  <input required type="password" maxlength="20" pattern="[A-Za-z]*" name="repassword"/>
+  <input required type="password" maxlength="20" pattern="^[0-9a-z]+$" name="repassword"/>
   <br>
   <input type="submit" value="送信"/>
 </form>
