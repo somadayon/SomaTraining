@@ -75,13 +75,13 @@
       <!-- 出社時刻の入力フィールドとボタン -->
       <label>出社時刻</label>
       <input required type="text" id="start_time" class="time-input" name="time0" value="<%= update.start_time %>" pattern="\d{2}:\d{2}" placeholder="HH:MM" />
-      <button type="button" onclick="clearTime('start_time')">✅</button>
+      <button type="button" onclick="clearTime('start_time')">未定</button>
       <br>
 
       <!-- 退社時刻の入力フィールドとボタン -->
       <label>退社時刻</label>
       <input required type="text" id="end_time" class="time-input" name="time1" value="<%= update.end_time %>" pattern="\d{2}:\d{2}" placeholder="HH:MM" />
-      <button type="button" onclick="clearTime('end_time')">✅</button>
+      <button type="button" onclick="clearTime('end_time')">未定</button>
       <br>
 
       <!-- コメントの入力フィールド -->
