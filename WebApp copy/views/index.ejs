@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <style>
+    /* スタイル設定 */
+    .table-container {
+      max-height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+    }
+
+    .table_sticky {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+
+    .table_sticky th, .table_sticky td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .table_sticky th {
+      position: sticky;
+      top: 0;
+      background: #f1f1f1;
+      z-index: 10;
+    }
+
+    .table_sticky tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    /* 時刻入力フィールドの横幅を5文字分に設定 */
+    .time-input {
+      width: 6ch;
+    }
+  </style>
+</head>
+<body>
+  <%- include('./error_messages'); %>
+  <% if(isAuth) { %>
+    <%- include('./messages'); %>
+    <h2>ようこそ <%= username %> さん</h2>
+
+    <!-- 入力フォーム -->
+    <form action="/" method="post">
+      <% 
+      // 今日の日付を取得
+      const today = new Date();
+    
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      %>
+
+      <label>日付</label>
+      <input required type="date" name="date" min="<%= formattedDate %>" max="9999-12-31" value="<%= update.date %>">
+      <br>
+
+      <!-- 出社時刻の入力フィールドとボタン -->
+      <label>出社時刻</label>
+      <input required type="text" id="start_time" class="time-input" name="time0" value="<%= update.start_time %>" pattern="\d{2}:\d{2}" placeholder="HH:MM" />
+      <button type="button" onclick="clearTime('start_time')">✅</button>
+      <br>
+
+      <!-- 退社時刻の入力フィールドとボタン -->
+      <label>退社時刻</label>
+      <input required type="text" id="end_time" class="time-input" name="time1" value="<%= update.end_time %>" pattern="\d{2}:\d{2}" placeholder="HH:MM" />
+      <button type="button" onclick="clearTime('end_time')">✅</button>
+      <br>
+
+      <!-- コメントの入力フィールド -->
+      <label>コメント</label>
+      <input type="text" name="comment" maxlength="50" placeholder="50字まで" value="<%= update.comment %>">
+      <br>
+
+      <input type="submit" value="<%= behave %>"/>
+    </form>
+
+    <!-- テーブルの表示 -->
+    <div class="table-container">
+      <table class="table_sticky">
+        <tr>
+          <th>ユーザー名</th>
+          <th>年月日</th>
+          <th>出社時刻</th>
+          <th>退社時刻</th>
+          <th>コメント</th>
+          <th></th>
+          <th></th>
+        </tr>
+
+        <!-- 修正タスク -->
+        <% if (update.id) { %>
+          <tr style="color: #af0303; font-weight:bold;">
+            <% const [ year, month, day ] = update.date.split('-'); %>
+            <td><%= username %></td> 
+            <td><%= year %>年<%= month %>月<%= day %>日</td>
+            <td><%= update.start_time %></td>
+            <td><%= update.end_time %></td>
+            <td><%= update.comment %></td>
+            
+            <td>
+              <!-- 削除フォーム -->
+              <form action="/hide" method="post" style="display:inline;">
+                <input type="hidden" name="id" value="<%= update.id %>"/>
+                <input type="submit" value="削除"/>
+              </form>
+            </td>
+            <td>
+              <!-- 取消フォーム -->
+              <form action="/cancel" method="post" style="display:inline;">
+                <input type="submit" value="取消"/>
+              </form>
+            </td>
+          </tr>
+        <% } %>
+
+        <!-- タスクリスト -->
+        <% for(var todo of todos) if ((todo.id != update.id)) { %>
+          <% if (todo.username == username) { %>
+            <% 
+              username = todo.username; 
+              const time0 = todo.start_time;
+              const time1 = todo.end_time;
+              const comment = todo.comment;
+            %>  
+              <tr style="color: #000000; font-weight:bold;">
+                <% const [ year, month, day ] = todo.date.split('-'); %>
+                <td><%= username %></td> 
+                <td><%= year %>年<%= month %>月<%= day %>日</td>
+                <td><%= time0 %></td>
+                <td><%= time1 %></td>
+                <td><%= comment %></td>
+                <td>
+                  <!-- 削除フォーム -->
+                  <form action="/hide" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="<%= todo.id %>"/>
+                    <input type="submit" value="削除"/>
+                  </form>
+                </td>
+                <td>
+                  <!-- 修正フォーム -->
+                  <form action="/update" method="post" style="display:inline;">
+                    <input type="hidden" name="id" value="<%= todo.id %>"/>
+                    <input type="submit" value="修正"/>
+                  </form>
+                </td>
+              </tr>
+          <% } else { %>
+            <tr>
+              <% const [ year, month, day ] = todo.date.split('-'); %>
+              <td><%= todo.username %></td> 
+              <td><%= year %>年<%= month %>月<%= day %>日</td>
+              <td><%= todo.start_time %></td>
+              <td><%= todo.end_time %></td>
+              <td><%= todo.comment %></td>
+            </tr>
+          <% } %>
+        <% } %>
+      </table>
+    </div>
+
+    <!-- ログアウトリンク -->
+    <a href="/logout" class="logout-button">ログアウト</a>
+  <% } else { %>
+    <h1>Welcome to the WebApp</h1>
+    <a href="/login">Login now!</a>
+    <br>
+    <a href="/signup">Sign up now!</a>
+  <% } %>
+
+  <!-- JavaScriptで時刻フィールドをクリアする関数 -->
+  <script>
+    function clearTime(fieldId) {
+      document.getElementById(fieldId).value = '99:99'; // フィールドを空にする
+    }
+  </script>
+</body>
+</html>
