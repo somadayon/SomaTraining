@@ -5,7 +5,7 @@
   <style>
     /* スタイル設定 */
     .table-container {
-      max-height: 300px;
+      max-height: 600px;
       overflow-y: auto;
       border: 1px solid #ccc;
     }
@@ -38,13 +38,23 @@
     .time-input {
       width: 6ch;
     }
+
+    /* ログアウトリンクを右寄せで小さく表示する */
+    .logout-button {
+      font-size: 0.6em;
+      margin-left: 30px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
   <%- include('./error_messages'); %>
   <% if(isAuth) { %>
     <%- include('./messages'); %>
-    <h2>ようこそ <%= username %> さん</h2>
+    <h2>ようこそ <%= username %> さん
+      <!-- ログアウトリンクを小さく右に表示 -->
+      <a href="/logout" class="logout-button">ログアウトはこちら</a>
+    </h2>
 
     <!-- 入力フォーム -->
     <form action="/" method="post">
@@ -168,8 +178,6 @@
       </table>
     </div>
 
-    <!-- ログアウトリンク -->
-    <a href="/logout" class="logout-button">ログアウト</a>
   <% } else { %>
     <h1>Welcome to the WebApp</h1>
     <a href="/login">Login now!</a>
