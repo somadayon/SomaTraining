@@ -17,50 +17,18 @@ int drag_mode = 0;
 double viw[3];
 double mid[3];
 double zom[3];
+double right[3];
 double out[3];
 double axis[3];
 double move_right[3], move_up[3];
-
-// 照明の設定
-void setupLighting() {
-    GLfloat light_position[] = {1.0, 1.0, 1.0, 0.0};  // 光源の位置
-    GLfloat light_diffuse[]  = {0.8, 0.8, 0.8, 1.0};  // 拡散光の強度
-    GLfloat light_specular[] = {1.0, 1.0, 1.0, 1.0};  // 鏡面光の強度
-    GLfloat light_ambient[]  = {0.2, 0.2, 0.2, 1.0};  // 環境光の強度
-
-    // 光源を設定
-    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
-    glLightfv(GL_LIGHT0, GL_DIFFUSE,  light_diffuse);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-    glLightfv(GL_LIGHT0, GL_AMBIENT,  light_ambient);
-
-    glEnable(GL_LIGHT0);   // ライト0を有効にする
-    glEnable(GL_LIGHTING); // 照明を有効にする
-}
-
-// 材質の設定
-void setupMaterial() {
-    GLfloat mat_specular[] = {1.0, 1.0, 1.0, 1.0};  // 鏡面反射成分
-    GLfloat mat_diffuse[]  = {0.6, 0.6, 0.6, 1.0};  // 拡散反射成分
-    GLfloat mat_ambient[]  = {0.3, 0.3, 0.3, 1.0};  // 環境光反射成分
-    GLfloat mat_shininess[] = {50.0};               // 光沢度
-
-    // 材質を設定
-    glMaterialfv(GL_FRONT, GL_SPECULAR,  mat_specular);
-    glMaterialfv(GL_FRONT, GL_DIFFUSE,   mat_diffuse);
-    glMaterialfv(GL_FRONT, GL_AMBIENT,   mat_ambient);
-    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-}
 
 // 画面の初期化
 void init() {
     glClearColor(0.0, 0.0, 0.0, 1.0);  // 背景色を黒に設定
     glEnable(GL_DEPTH_TEST);            // 深度テストを有効にする
-    setupLighting();                    // 照明の設定を有効化
-    setupMaterial();                    // 材質の設定を有効化
 }
 
-// 立方体の描画
+// 描画関数
 void display() {
     // 画面をクリア
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -70,9 +38,9 @@ void display() {
     glLoadIdentity();
     gluLookAt(eye[0], eye[1], eye[2],  // カメラの位置
               pov[0], pov[1], pov[2],  // カメラが見る位置
-               up[0],  up[1],  up[2]);    // 上方向
+              up[0] , up[1] , up[2] ); // 上方向
 
-    
+    glColor3f(1.0, 0.5, 0.0);  // オレンジ色でティーポットを描画
     glutSolidTeapot(0.5);      // ソリッドなティーポットをサイズ1.0で描画
 
     // バッファを入れ替える
@@ -120,14 +88,15 @@ void motion(int x, int y) {
         double drg[3] = {dx * scl, dy * scl, 0};
 
         // 視線ベクトル（eye - pov）を計算し、視線ベクトルを計算
+        double move_right[3], move_up[3];
         sub(eye, pov, viw);
-        crs(viw, up , move_right);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
-        crs(viw, move_right, move_up);
-        nrm(move_right, move_right);
+        crs(viw, up , right);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
+        crs(viw, right, move_up);
+        nrm(right, right);
         nrm(move_up, move_up);
 
         // 水平方向の平行移動
-        mul(drg[0], move_right,  move_right);  // 右方向に移動
+        mul(drg[0], right,  move_right);  // 右方向に移動
         mul(-drg[1], move_up,  move_up);     // 上方向に移動
 
         // カメラ位置と注視点を移動
@@ -144,6 +113,7 @@ void motion(int x, int y) {
         mul(-scl, mid, zom);  // ズーム量に応じて視線ベクトルをスケーリング
 
         // カメラ位置を更新
+        // if(len(viw) > len(zom))
         add(eye, zom, eye);
 
     } else if(drag_mode == 3) {
@@ -151,21 +121,18 @@ void motion(int x, int y) {
         double scl = 0.001 * 2 * M_PI;  
         double drg[3] = {dx * scl, dy * scl, 0};
 
-        sub(eye, pov, viw);        // 視線ベクトルviw（eye - pov）を計算
+        // 視線ベクトルviw（eye - pov）を計算し、右方向ベクトルを計算
+        sub(eye, pov, viw);
+        crs(viw, up, right);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
+        crs(viw, right, move_up);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
         
-        // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
-        crs(viw, up, move_right);    
-        crs(viw, move_right, move_up);  // 視線ベクトルと右方向ベクトルの外積で上方向ベクトルを計算
-        
-        nrm(move_right, move_right);      //正規化
-        nrm(move_up, move_up);  //正規化
+        nrm(right, right);
+        nrm(move_up, move_up);
 
         // 垂直方向の回転
         if(dx) rot(eye, move_up, pov, dx * scl, eye); // カメラ位置を更新
-        if(dy) rot(eye, move_right, pov, dy * scl, eye);   // カメラ位置を更新
-
-        sub(pov, eye, viw);        // 視線ベクトルviw（pov - eye）を計算
-        crs(viw, move_right, up);    
+        if(dy) rot(eye, right, pov, dy * scl, eye); // カメラ位置を更新
+        
     }
 
     // マウス位置を更新
@@ -181,7 +148,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(500, 500);
-    glutCreateWindow("3D Cube with Lighting");
+    glutCreateWindow("Mouse Control");
 
     // 初期化とコールバック関数の設定
     init();
@@ -192,5 +159,4 @@ int main(int argc, char** argv) {
 
     // GLUTメインループ
     glutMainLoop();
-    return 0;
 }

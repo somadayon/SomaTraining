@@ -17,7 +17,6 @@ int drag_mode = 0;
 double viw[3];
 double mid[3];
 double zom[3];
-double right[3] = {1.0, 0.0, 1.0};
 double out[3];
 double axis[3];
 double move_right[3], move_up[3];
