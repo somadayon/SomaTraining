@@ -5,6 +5,12 @@ const connection = require(path.join(__dirname, '..', 'functions', 'db'));
 
 router.post('/', function (req, res, next) {
   const taskId = req.body.id; // id をリクエストボディから取得
+
+  // taskId が取得できなかった場合、リダイレクト
+  if (!taskId) {
+    return res.redirect('/'); // 取得できなかった場合にリダイレクト
+  }
+  
   connection.query(
     `SELECT id 
     FROM tasks 
