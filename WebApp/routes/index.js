@@ -31,10 +31,10 @@ function getTask(callback) {
     `SELECT * 
     FROM tasks 
     WHERE ena = TRUE
-    ORDER BY CASE WHEN username = ? THEN 0 ELSE 1 END, 
-                   date ASC, 
-                   username ASC, 
-                   start_time ASC`,
+    ORDER BY date ASC, 
+             CASE WHEN username = ? THEN 0 ELSE 1 END, 
+             username ASC, 
+             start_time ASC`,
     [username],
     (error, results) => {
       if (error) {
