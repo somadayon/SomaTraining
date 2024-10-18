@@ -18,7 +18,7 @@ int v_count = 0;
 int n_count = 0;
 int f_count = 0;
 
-double eye[3] = {2.0, 2.0, 2.0};
+double eye[3] = {0.2, 0.2, 0.2};
 double pov[3] = {0.0, 0.0, 0.0};
 double up[3]  = {0.0, 1.0, 0.0};
 double fovh = 45.0;
@@ -43,24 +43,25 @@ void LoadObj(const char* filepath) {
         return;
     }
 
-    char line[128];
+    char line[1000000];
 
     while (fgets(line, sizeof(line), fp)) {
         if (line[0] == 'v' && line[1] == ' ') {
             // 頂点データを読み込む
             sscanf(line, "v %f %f %f", &vertices[v_count][0], &vertices[v_count][1], &vertices[v_count][2]);
             v_count++;
-        // } else if (line[0] == 'v' && line[1] == 'n') {
-        //     // 法線データを読み込む
-        //     sscanf(line, "vn %f %f %f", &normals[n_count][0], &normals[n_count][1], &normals[n_count][2]);
-        //     n_count++;
+        } else if (line[0] == 'v' && line[1] == 'n') {
+            // 法線データを読み込む
+            sscanf(line, "vn %f %f %f", &normals[n_count][0], &normals[n_count][1], &normals[n_count][2]);
+            n_count++;
         } else if (line[0] == 'f') {
             // 面データを読み込む（頂点と法線のインデックス）
-            int v[3];
-            int matched = sscanf(line, "f %d %d %d", &v[0], &v[1], &v[2]);
+            int v[3], vn;
+            int matched = sscanf(line, "f %d//%d %d//%d %d//%d", &v[0], &vn, &v[1], &vn, &v[2], &vn);
             faces[f_count][0] = v[0] - 1;
             faces[f_count][1] = v[1] - 1;
             faces[f_count][2] = v[2] - 1;
+            face_normals[f_count] = vn - 1;  // 法線インデックス
             f_count++;
         }
     }
@@ -74,8 +75,8 @@ void drawOBJ() {
     glBegin(GL_TRIANGLES);
 
     for (int i = 0; i < f_count; i++) {
-        // // 法線を設定
-        // glNormal3f(normals[face_normals[i]][0], normals[face_normals[i]][1], normals[face_normals[i]][2]);
+        // 法線を設定
+        glNormal3f(normals[face_normals[i]][0], normals[face_normals[i]][1], normals[face_normals[i]][2]);
         
         // 各頂点を描画
         for (int j = 0; j < 3; j++) {  // 各面は3頂点を持つ
@@ -172,7 +173,7 @@ void motion(int x, int y) {
 
     if(drag_mode == 1) {
         // 平行移動
-        double scl = 0.01;  
+        double scl = 0.001;  
         double drg[3] = {dx * scl, dy * scl, 0};
 
         // 視線ベクトル（eye - pov）を計算し、視線ベクトルを計算
@@ -237,7 +238,7 @@ void reshape(int w, int h) {
     glViewport(0, 0, w, h);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0, (double)w / (double)h, 1.0, 100.0);  // 視野を設定
+    gluPerspective(45.0, (double)w / (double)h, 0.1, 100.0);  // 視野を設定
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -249,7 +250,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("bunny.obj");
 
     // OBJファイルの読み込みとデータ表示
-    LoadObj("bunny.obj");
+    LoadObj("bunny_add_vn.obj");
     
     // 初期化とコールバック関数の設定
     init();
