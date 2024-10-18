@@ -106,7 +106,6 @@ void mouse(int button, int state, int x, int y) {
         drag_mode = 0;  // ドラッグモードをリセット
     }
 }
-
 // マウスのドラッグに応じた操作
 void motion(int x, int y) {
     if(!drag_mode) return;
@@ -116,7 +115,7 @@ void motion(int x, int y) {
 
     if(drag_mode == 1) {
         // 平行移動
-        double scl = 0.01;  
+        double scl = 0.001;  
         double drg[3] = {dx * scl, dy * scl, 0};
 
         // 視線ベクトル（eye - pov）を計算し、視線ベクトルを計算
@@ -144,7 +143,12 @@ void motion(int x, int y) {
         mul(-scl, mid, zom);  // ズーム量に応じて視線ベクトルをスケーリング
 
         // カメラ位置を更新
-        add(eye, zom, eye);
+        double dis_viw[3], dis_zom[3];
+        sub(viw, eye, dis_viw);
+        sub(zom, eye, dis_zom);
+        if(len(dis_viw) > len(dis_zom)){
+            add(eye, zom, eye); // カメラ位置を更新
+        }
 
     } else if(drag_mode == 3) {
         // 回転操作

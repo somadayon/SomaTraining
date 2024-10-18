@@ -201,7 +201,12 @@ void motion(int x, int y) {
         mul(-scl, mid, zom);  // ズーム量に応じて視線ベクトルをスケーリング
 
         // カメラ位置を更新
-        add(eye, zom, eye);
+        double dis_viw[3], dis_zom[3];
+        sub(viw, eye, dis_viw);
+        sub(zom, eye, dis_zom);
+        if(len(dis_viw) - len(dis_zom) > 0.1){
+            add(eye, zom, eye); // カメラ位置を更新
+        }
 
     } else if(drag_mode == 3) {
         // 回転操作
