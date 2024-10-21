@@ -5,7 +5,7 @@
 #define MAX_VERTICES 100000
 #define MAX_FACES    100000
 
-double vertices[MAX_VERTICES][3]; // 頂点
+float vertices[MAX_VERTICES][3]; // 頂点
 int faces[MAX_FACES][3];         // 面 (3角形を想定)
 
 int v_count = 0;
@@ -19,7 +19,7 @@ void LoadPly(const char* filepath) {
         return;
     }
 
-    char line[256];
+    char line[100];
     int reading_vertices = 0;
     int reading_faces = 0;
 
@@ -31,9 +31,9 @@ void LoadPly(const char* filepath) {
         }
 
         // 頂点の読み込み
-        double x, y, z, confidence, intensity;
+        float x, y, z, confidence, intensity;
         int num_vertices, v1, v2, v3;
-        if (sscanf(line, "%lf %lf %lf %lf %lf", &x, &y, &z, &confidence, &intensity) == 5) {
+        if (sscanf(line, "%f %f %f %f %f", &x, &y, &z, &confidence, &intensity) == 5) {
             vertices[v_count][0] = x;
             vertices[v_count][1] = y;
             vertices[v_count][2] = z;
@@ -86,7 +86,7 @@ int main() {
     // 読み込んだデータをOBJファイルに書き出す
     WriteObj("buy.obj");
 
-    printf("v_count:%d, f_count:%d\n", v_count, f_count);
+    printf("made buy.obj\n");
 
     return 0;
 }

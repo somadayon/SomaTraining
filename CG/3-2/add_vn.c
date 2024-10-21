@@ -52,7 +52,7 @@ void Cal_vn(double *a, double *b, double *c, double *out) {
     double mid1[3], mid2[3];
     sub(a, b, mid1);
     sub(a, c, mid2);
-    crs(mid2, mid1, out);
+    crs(mid1, mid2, out);
 
     // 正規化
     nrm(out, out);

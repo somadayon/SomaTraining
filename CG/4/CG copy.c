@@ -75,7 +75,7 @@ void mouse(int button, int state, int x, int y) {
     }
 }
 
-// マウスのドラッグに応じた操作
+/// マウスのドラッグに応じた操作
 void motion(int x, int y) {
     if(!drag_mode) return;
 
@@ -84,19 +84,18 @@ void motion(int x, int y) {
 
     if(drag_mode == 1) {
         // 平行移動
-        double scl = 0.01;  
+        double scl = 0.001;  
         double drg[3] = {dx * scl, dy * scl, 0};
 
         // 視線ベクトル（eye - pov）を計算し、視線ベクトルを計算
-        double move_right[3], move_up[3];
         sub(eye, pov, viw);
-        crs(viw, up , right);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
-        crs(viw, right, move_up);
-        nrm(right, right);
+        crs(viw, up , move_right);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
+        crs(viw, move_right, move_up);
+        nrm(move_right, move_right);
         nrm(move_up, move_up);
 
         // 水平方向の平行移動
-        mul(drg[0], right,  move_right);  // 右方向に移動
+        mul(drg[0], move_right,  move_right);  // 右方向に移動
         mul(-drg[1], move_up,  move_up);     // 上方向に移動
 
         // カメラ位置と注視点を移動
@@ -113,26 +112,33 @@ void motion(int x, int y) {
         mul(-scl, mid, zom);  // ズーム量に応じて視線ベクトルをスケーリング
 
         // カメラ位置を更新
-        // if(len(viw) > len(zom))
-        add(eye, zom, eye);
+        double dis_viw[3], dis_zom[3];
+        sub(viw, eye, dis_viw);
+        sub(zom, eye, dis_zom);
+        if(len(dis_viw) - len(dis_zom) > 0.1){
+            add(eye, zom, eye); // カメラ位置を更新
+        }
 
     } else if(drag_mode == 3) {
         // 回転操作
         double scl = 0.001 * 2 * M_PI;  
         double drg[3] = {dx * scl, dy * scl, 0};
 
-        // 視線ベクトルviw（eye - pov）を計算し、右方向ベクトルを計算
-        sub(eye, pov, viw);
-        crs(viw, up, right);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
-        crs(viw, right, move_up);  // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
+        sub(eye, pov, viw);        // 視線ベクトルviw（eye - pov）を計算
         
-        nrm(right, right);
-        nrm(move_up, move_up);
+        // 視線ベクトルと上方向ベクトルの外積で右方向ベクトルを計算
+        crs(viw, up, move_right);    
+        crs(viw, move_right, move_up);  // 視線ベクトルと右方向ベクトルの外積で上方向ベクトルを計算
+        
+        nrm(move_right, move_right);      //正規化
+        nrm(move_up, move_up);  //正規化
 
         // 垂直方向の回転
         if(dx) rot(eye, move_up, pov, dx * scl, eye); // カメラ位置を更新
-        if(dy) rot(eye, right, pov, dy * scl, eye); // カメラ位置を更新
-        
+        if(dy) rot(eye, move_right, pov, dy * scl, eye);   // カメラ位置を更新
+
+        sub(pov, eye, viw);        // 視線ベクトルviw（pov - eye）を計算
+        crs(viw, move_right, up);    
     }
 
     // マウス位置を更新

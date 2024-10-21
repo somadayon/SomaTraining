@@ -1,17 +1,17 @@
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <math.h>
-    #include <GL/glut.h>
-    #include "rot_qua/rot_qua.h"
-    #include "rot_qua/vec3.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <GL/glut.h>
+#include "rot_qua/rot_qua.h"
+#include "rot_qua/vec3.h"
 
 #define MAX_VERTICES 1000000
 #define MAX_NORMALS  1000000
 #define MAX_FACES    1000000
 
-double vertices[MAX_VERTICES][3]; // 頂点
-double normals[MAX_NORMALS][3];   // 法線
-int faces[MAX_FACES][4];         // 各面は最大4つの頂点を含むと仮定
+float vertices[MAX_VERTICES][3]; // 頂点
+float normals[MAX_NORMALS][3];   // 法線
+int faces[MAX_FACES][3];         // 各面に対応する頂点のインデックス
 int face_normals[MAX_FACES];     // 各面に対応する法線のインデックス
 
 int v_count = 0;
@@ -48,11 +48,11 @@ void LoadObj(const char* filepath) {
     while (fgets(line, sizeof(line), fp)) {
         if (line[0] == 'v' && line[1] == ' ') {
             // 頂点データを読み込む
-            sscanf(line, "v %lf %lf %lf", &vertices[v_count][0], &vertices[v_count][1], &vertices[v_count][2]);
+            sscanf(line, "v %f %f %f", &vertices[v_count][0], &vertices[v_count][1], &vertices[v_count][2]);
             v_count++;
         } else if (line[0] == 'v' && line[1] == 'n') {
             // 法線データを読み込む
-            sscanf(line, "vn %lf %lf %lf", &normals[n_count][0], &normals[n_count][1], &normals[n_count][2]);
+            sscanf(line, "vn %f %f %f", &normals[n_count][0], &normals[n_count][1], &normals[n_count][2]);
             n_count++;
         } else if (line[0] == 'f') {
             // 面データを読み込む（頂点と法線のインデックス）
@@ -72,16 +72,16 @@ void LoadObj(const char* filepath) {
 // モデルの描画
 void drawOBJ() {
     // 各面を描画
-    glBegin(GL_TRIANGLES);
+    glBegin(GL_TRIANGLE_FAN);
 
     for (int i = 0; i < f_count; i++) {
         // 法線を設定
         glNormal3f(normals[face_normals[i]][0], normals[face_normals[i]][1], normals[face_normals[i]][2]);
+        
         // 各頂点を描画
         for (int j = 0; j < 3; j++) {  // 各面は3頂点を持つ
             glVertex3f(vertices[faces[i][j]][0], vertices[faces[i][j]][1], vertices[faces[i][j]][2]);
         }
-        printf("%d, %d, %d\n", faces[i][0], faces[i][1], faces[i][2]);
     }
 
     glEnd();
@@ -124,7 +124,7 @@ void init() {
     glEnable(GL_DEPTH_TEST);            // 深度テストを有効にする
     setupLighting();                    // 照明の設定を有効化
     setupMaterial();                    // 材質の設定を有効化
-    glShadeModel(GL_SMOOTH);            // スムースシェーディングを有効にする
+    // glShadeModel(GL_SMOOTH);            // スムースシェーディングを有効にする
 }
 
 // 描画関数
