@@ -91,21 +91,33 @@ def cal_nrm(data)
     data["f"] = new_faces # 面データの置き換え
 end
 
-# OBJファイルを読み込む関数
-def load_obj(filepath, data)
+# PLYファイルを読み込む関数
+def load_ply(filepath, data)
     fp = open(filepath)
+    sign = 0
     fp.each{|line|
-        line.chomp!
+        line.chomp! # 改行削除
+
+        # "end_header"まで処理待ち
+        if line == "end_header"
+            sign = 1 
+            next
+        end
+        next if sign == 0
+
         d = line.split()
-        if d[0] == "v"
-            data[d[0]].push(d[1, 3].map(&:to_f))
-        elsif d[0] == "f"
-            data[d[0]].push(d[1, 3].map{|v| v.to_i - 1 })
+        sign = 2 if d[0] == "3"
+
+        if sign == 1
+            p d[0,3]
+            data["v"].push(d[0, 3].map(&:to_f))
+        elsif d[0] == "3"
+            data["f"].push(d[1, 3].map{|v| v.to_i })
         end
     }
 end
 
-# 新しいOBJファイルを作成する関数
+# OBJファイルを書き込む関数
 def write_obj(filepath, data)
     fp = open(filepath, "w")
     data["v"].each{|v| fp.puts "v #{v[0]} #{v[1]} #{v[2]}"}
@@ -125,7 +137,9 @@ data = {"v" => [], "n" => [], "f" => []}
 # data["f"] = {[v_index] => [n_index]}
 
 # メイン処理
-load_obj('buy.obj', data)
+load_ply('bun_zipper_res4.ply', data)
+# pp data["v"]
+# pp data["f"]
 srt(data)
 cal_nrm(data)
 write_obj('bunny.obj', data)

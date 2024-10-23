@@ -1,23 +1,26 @@
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include <math.h>
-    #include <GL/glut.h>
-    #include "rot_qua/rot_qua.h"
-    #include "rot_qua/vec3.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <GL/glut.h>
+#include "rot_qua/rot_qua.h"
+#include "rot_qua/vec3.h"
 
 #define MAX_VERTICES 1000000
 #define MAX_NORMALS  1000000
 #define MAX_FACES    1000000
 
-double vertices[MAX_VERTICES][3]; // 頂点
-double normals[MAX_NORMALS][3];   // 法線
-int faces[MAX_FACES][4];         // 各面は最大4つの頂点を含むと仮定
-int face_normals[MAX_FACES];     // 各面に対応する法線のインデックス
+/*プロットデータ*/
+double vrts[MAX_VERTICES][3]; // 頂点
+double nrms[MAX_NORMALS][3];  // 法線
+int f_vrts[MAX_FACES][3]; // [各面に対応する頂点のインデックス
+int f_nrms[MAX_FACES][3];  // 各面に対応する法線のインデックス
 
 int v_count = 0;
 int n_count = 0;
 int f_count = 0;
 
+
+/*画面操作用*/
 double eye[3] = {0.2, 0.2, 0.2};
 double pov[3] = {0.0, 0.0, 0.0};
 double up[3]  = {0.0, 1.0, 0.0};
@@ -26,7 +29,7 @@ double fovv = 45.0;
 int bgn[2];
 int drag_mode = 0;
 
-// ベクトル計算用 
+/*ベクトル計算用*/
 double viw[3];
 double mid[3];
 double zom[3];
@@ -34,6 +37,7 @@ double right[3];
 double out[3];
 double axis[3];
 double move_right[3], move_up[3];
+
 
 // .obj ファイルを読み込む関数
 void LoadObj(const char* filepath) {
@@ -48,20 +52,16 @@ void LoadObj(const char* filepath) {
     while (fgets(line, sizeof(line), fp)) {
         if (line[0] == 'v' && line[1] == ' ') {
             // 頂点データを読み込む
-            sscanf(line, "v %lf %lf %lf", &vertices[v_count][0], &vertices[v_count][1], &vertices[v_count][2]);
+            sscanf(line, "v %lf %lf %lf", &vrts[v_count][0], &vrts[v_count][1], &vrts[v_count][2]);
             v_count++;
         } else if (line[0] == 'v' && line[1] == 'n') {
             // 法線データを読み込む
-            sscanf(line, "vn %lf %lf %lf", &normals[n_count][0], &normals[n_count][1], &normals[n_count][2]);
+            sscanf(line, "vn %lf %lf %lf", &nrms[n_count][0], &nrms[n_count][1], &nrms[n_count][2]);
             n_count++;
         } else if (line[0] == 'f') {
             // 面データを読み込む（頂点と法線のインデックス）
-            int v[3], vn;
-            int matched = sscanf(line, "f %d//%d %d//%d %d//%d", &v[0], &vn, &v[1], &vn, &v[2], &vn);
-            faces[f_count][0] = v[0] - 1;
-            faces[f_count][1] = v[1] - 1;
-            faces[f_count][2] = v[2] - 1;
-            face_normals[f_count] = vn - 1;  // 法線インデックス
+            int v[3], vn[3];
+            int matched = sscanf(line, "f %d//%d %d//%d %d//%d", &f_vrts[f_count][0], &f_nrms[f_count][0], &f_vrts[f_count][1], &f_nrms[f_count][1], &f_vrts[f_count][2], &f_nrms[f_count][2]);
             f_count++;
         }
     }
@@ -75,13 +75,11 @@ void drawOBJ() {
     glBegin(GL_TRIANGLES);
 
     for (int i = 0; i < f_count; i++) {
-        // 法線を設定
-        glNormal3f(normals[face_normals[i]][0], normals[face_normals[i]][1], normals[face_normals[i]][2]);
         // 各頂点を描画
         for (int j = 0; j < 3; j++) {  // 各面は3頂点を持つ
-            glVertex3f(vertices[faces[i][j]][0], vertices[faces[i][j]][1], vertices[faces[i][j]][2]);
+            glNormal3dv(nrms[f_nrms[i][j]-1]); // 法線を設定
+            glVertex3dv(vrts[f_vrts[i][j]-1]); // 頂点を設定
         }
-        printf("%d, %d, %d\n", faces[i][0], faces[i][1], faces[i][2]);
     }
 
     glEnd();
@@ -124,7 +122,7 @@ void init() {
     glEnable(GL_DEPTH_TEST);            // 深度テストを有効にする
     setupLighting();                    // 照明の設定を有効化
     setupMaterial();                    // 材質の設定を有効化
-    glShadeModel(GL_SMOOTH);            // スムースシェーディングを有効にする
+    // glShadeModel(GL_SMOOTH);            // スムースシェーディングを有効にする
 }
 
 // 描画関数
