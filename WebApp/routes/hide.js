@@ -4,6 +4,12 @@ const path = require('path');
 const connection = require(path.join(__dirname, '..', 'functions', 'db'));
 
 router.post('/', function (req, res, next) {
+  // トークン認証とusernameの取得
+  const token = req.session.token;
+  if (!token) {
+    isAuth = false;
+    return renderIndex(res, []);  // 認証されていない場合、空のページをレンダリング
+  }
   const taskId = req.body.id; // id をリクエストボディから取得
 
   // taskId が取得できなかった場合、リダイレクト
