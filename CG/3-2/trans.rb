@@ -52,18 +52,7 @@ end
 
 # 面の法線を計算する関数
 def cal_nrm(v)
-    candidates = [
-        crs(sub(v[0], v[1]), sub(v[0], v[2])),
-        crs(sub(v[0], v[1]), sub(v[1], v[2])),
-        crs(sub(v[0], v[2]), sub(v[2], v[1]))
-    ]
-
-  # 候補の中で最初にゼロベクトルでないものを法線に採用
-  candidates.each do |candidate|
-    return candidate unless is_zero_vec?(candidate)
-  end
-
-  [0.0, 0.0, 0.0] # 全ての候補がゼロベクトルの場合
+    crs(sub(v[0], v[1]), sub(v[1], v[2]))
 end
 
 # ゼロベクトルかどうかの判定
@@ -85,7 +74,7 @@ def add_face_nrm(data)
     new_faces = [] # 面データ置き換え用
     data["f"].each{|face|
         v = [data["v"][face[0]], data["v"][face[1]], data["v"][face[2]]]
-        nrm = nrm(crs(sub(v[0], v[1]), sub(v[1], v[2])))
+        nrm = nrm(cal_nrm(v))
         data["n"][n_idx] = nrm
         # 各頂点に対応する法線インデックスを設定
         new_face = {}

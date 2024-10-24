@@ -1,0 +1,5 @@
+ssl証明書(中間証明): /etc/nginx/ssl/sinus-project.crt
+ssl鍵: /etc/nginx/ssl/sinus-project.key
+ssh接続用秘密鍵: ~/.ssh/id_ed25519
+nginx設定ファイル: /etc/nginx/sites-enabled/default
+

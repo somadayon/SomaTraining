@@ -90,6 +90,7 @@ void drawOBJ() {
             double viw[3];
             double nrm[] = {nrms[n_idx][0], nrms[n_idx][1], nrms[n_idx][2]}; 
             sub(eye, pov, viw);
+            // glNormal3dv(nrm); // 法線を設定
             if(dot(viw, nrm) > 0){
                 glNormal3dv(nrm); // 法線を設定
             } else {

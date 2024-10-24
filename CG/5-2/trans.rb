@@ -1,9 +1,3 @@
-def pp(data)
-    data.each{|arr|
-        p arr
-    }
-end
-
 # ベクトル和
 def add(a, b)
     [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
@@ -54,7 +48,7 @@ end
 def ave(data)
     out = [0, 0, 0]
     data.each{|vec| 
-        out = mul(-1, out) if dot(vec, out) < 0
+        # out = mul(-1, out) if dot(vec, out) < 0
         out = add(vec, out) 
     }
     nrm(out)
@@ -67,18 +61,19 @@ end
   
 # 法線を計算する関数
 def cal_nrm(v)
-    candidates = [
-    crs(sub(v[0], v[1]), sub(v[0], v[2])),
-    crs(sub(v[0], v[1]), sub(v[1], v[2])),
-    crs(sub(v[0], v[2]), sub(v[2], v[1]))
-  ]
+    crs(sub(v[0], v[1]), sub(v[0], v[2]))
+#     candidates = [
+#         crs(sub(v[0], v[1]), sub(v[0], v[2])),
+#         crs(sub(v[0], v[1]), sub(v[1], v[2])),
+#         crs(sub(v[0], v[2]), sub(v[2], v[1]))
+#     ]
 
-  # 候補の中で最初にゼロベクトルでないものを法線に採用
-  candidates.each do |candidate|
-    return candidate unless is_zero_vec?(candidate)
-  end
+#   # 候補の中で最初にゼロベクトルでないものを法線に採用
+#   candidates.each do |candidate|
+#     return candidate unless is_zero_vec?(candidate)
+#   end
 
-  [0.0, 0.0, 0.0] # 全ての候補がゼロベクトルの場合
+#   [0.0, 0.0, 0.0] # 全ての候補がゼロベクトルの場合
 end
 
 # 法線を追加する関数
@@ -171,6 +166,5 @@ data = {"v" => [], "n" => [], "f" => []}
 
 # メイン処理
 load_ply('bun_zipper_res4.ply', data)
-srt(data)
 add_nrm(data)
 write_obj('bunny.obj', data)

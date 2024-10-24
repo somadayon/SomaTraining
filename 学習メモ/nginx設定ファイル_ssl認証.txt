@@ -1,0 +1,19 @@
+server {
+    listen 80;
+    server_name sinus-project.com www.sinus-project.com;
+
+    root /var/www/html;  # ここにrootディレクティブを設定
+    index index.html index.htm index.nginx-debian.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # .well-knownディレクトリの設定
+    location /.well-known/ {
+        try_files $uri $uri/ =404;
+    }
+
+    # HTTPSリダイレクト (コメント解除で使用可能)
+    # return 301 https://$host$request_uri;
+}

@@ -90,12 +90,13 @@ void drawOBJ() {
             double viw[3];
             double nrm[] = {nrms[n_idx][0], nrms[n_idx][1], nrms[n_idx][2]}; 
             sub(eye, pov, viw);
-            if(dot(viw, nrm) > 0.0){
-                glNormal3dv(nrm); // 法線を設定
-            } else {
-                mul(-1, nrm, nrm);
-                glNormal3dv(nrm);
-            }
+            glNormal3dv(nrm);
+            // if(dot(viw, nrm) > 0.0){
+            //     glNormal3dv(nrm); // 法線を設定
+            // } else {
+            //     mul(-1, nrm, nrm);
+            //     glNormal3dv(nrm);
+            // }
             glVertex3dv(vrts[v_idx]); // 頂点を設定
         }
     }
@@ -147,6 +148,8 @@ void init() {
 void display() {
     // 画面をクリア
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glEnable(GL_CULL_FACE);  // カリングを有効化
+    glCullFace(GL_BACK);    // 裏面をカリング
 
     // カメラの設定
     glMatrixMode(GL_MODELVIEW);
