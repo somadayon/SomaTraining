@@ -115,6 +115,7 @@ router.post('/', function (req, res, next) {
       // POSTデータから時間やコメント、日付を取得
       const { time0, time1, comment, date: getDate } = req.body; 
       const [year, month, day] = getDate.split('-');
+      const date = new Date(year, month - 1, day);  // 日付を修正して変換
       const formattedDate = `${year}-${month}-${day}`;
       const [hour0, min0] = time0.split(':');
       const formattedTime0 = `${hour0}:${min0}`;
@@ -126,6 +127,9 @@ router.post('/', function (req, res, next) {
         if (errorMessage) return renderIndex(res, [errorMessage]);  // エラー処理
 
         let errorMessages = [];
+        // if (nowDate > date) {
+        //   errorMessages.push('年月日が無効です');  // 日付が過去の場合
+        // }
         if (!isValidTime(time0) || !isValidTime(time1) || time0 > time1) {
           errorMessages.push('出社時刻または退社時刻が無効です');  // 時刻が無効の場合
         }
