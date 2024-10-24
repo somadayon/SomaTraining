@@ -12,8 +12,8 @@
 /*プロットデータ*/
 double vrts[MAX_VERTICES][3]; // 頂点
 double nrms[MAX_NORMALS][3];  // 法線
-int f_vrts[MAX_FACES][3]; // [各面に対応する頂点のインデックス
-int f_nrms[MAX_FACES][3];  // 各面に対応する法線のインデックス
+int f_vrts[MAX_FACES][3];     // 各面に対応する頂点のインデックス
+int f_nrms[MAX_FACES][3];     // 各面に対応する法線のインデックス
 
 int v_count = 0;
 int n_count = 0;
@@ -61,8 +61,17 @@ void LoadObj(const char* filepath) {
         } else if (line[0] == 'f') {
             // 面データを読み込む（頂点と法線のインデックス）
             int v[3], vn[3];
-            int matched = sscanf(line, "f %d//%d %d//%d %d//%d", &f_vrts[f_count][0], &f_nrms[f_count][0], &f_vrts[f_count][1], &f_nrms[f_count][1], &f_vrts[f_count][2], &f_nrms[f_count][2]);
-            f_count++;
+            int matched = sscanf(line, "f %d//%d %d//%d %d//%d",
+                     &f_vrts[f_count][0], &f_nrms[f_count][0],
+                     &f_vrts[f_count][1], &f_nrms[f_count][1],
+                     &f_vrts[f_count][2], &f_nrms[f_count][2]);
+            if (matched == 6) {
+                for (int i = 0; i < 3; i++) {
+                    f_vrts[f_count][i] -= 1;  // 0基準に修正
+                    f_nrms[f_count][i] -= 1;  // 0基準に修正
+                }
+                f_count++;
+            }
         }
     }
 
@@ -75,10 +84,19 @@ void drawOBJ() {
     glBegin(GL_TRIANGLES);
 
     for (int i = 0; i < f_count; i++) {
-        // 各頂点を描画
-        for (int j = 0; j < 3; j++) {  // 各面は3頂点を持つ
-            glNormal3dv(nrms[f_nrms[i][j]-1]); // 法線を設定
-            glVertex3dv(vrts[f_vrts[i][j]-1]); // 頂点を設定
+        for (int j = 0; j < 3; j++) {
+            int v_idx = f_vrts[i][j];
+            int n_idx = f_nrms[i][j];
+            double viw[3];
+            double nrm[] = {nrms[n_idx][0], nrms[n_idx][1], nrms[n_idx][2]}; 
+            sub(eye, pov, viw);
+            if(dot(viw, nrm) > 0){
+                glNormal3dv(nrm); // 法線を設定
+            } else {
+                mul(-1, nrm, nrm);
+                glNormal3dv(nrm);
+            }
+            glVertex3dv(vrts[v_idx]); // 頂点を設定
         }
     }
 
@@ -119,10 +137,10 @@ void setupMaterial() {
 // 画面の初期化
 void init() {
     glClearColor(0.0, 0.0, 0.0, 1.0);  // 背景色を黒に設定
-    glEnable(GL_DEPTH_TEST);            // 深度テストを有効にする
-    setupLighting();                    // 照明の設定を有効化
-    setupMaterial();                    // 材質の設定を有効化
-    // glShadeModel(GL_SMOOTH);            // スムースシェーディングを有効にする
+    glEnable(GL_DEPTH_TEST);           // 深度テストを有効にする
+    setupLighting();                   // 照明の設定を有効化
+    setupMaterial();                   // 材質の設定を有効化
+    // glShadeModel(GL_SMOOTH);           // スムースシェーディングを有効にする
 }
 
 // 描画関数
@@ -250,7 +268,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(500, 500);
-    glutCreateWindow("bunny.obj");
+    glutCreateWindow("bunny");
 
     // OBJファイルの読み込みとデータ表示
     LoadObj("bunny.obj");

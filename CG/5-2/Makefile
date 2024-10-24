@@ -13,4 +13,4 @@ run_cg:
 	./$(NAME)
 
 clean:
-	rm -f $(NAME) $(TRANS_NAME)
+	rm -f $(NAME)
